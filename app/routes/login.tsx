@@ -3,7 +3,7 @@ import type {
   ActionArgs,
   V2_MetaFunction,
 } from '@remix-run/node';
-import { Link, useActionData, useSearchParams } from '@remix-run/react';
+import { Form, Link, useActionData, useSearchParams } from '@remix-run/react';
 import { db } from '~/utils/db.server';
 import { getFromForm } from '~/tools/getFromForm';
 
@@ -120,7 +120,7 @@ export default function LoginRoute() {
     <div className="container">
       <div className="content" data-light="">
         <h1>Login</h1>
-        <form method="post">
+        <Form method="post">
           <input type="hidden" name="redirectTo" value={redirectTo} />
           <fieldset>
             <legend className="sr-only">Login or Register?</legend>
@@ -200,7 +200,7 @@ export default function LoginRoute() {
           <button type="submit" className="button">
             Submit
           </button>
-        </form>
+        </Form>
       </div>
       <div className="links">
         <ul>

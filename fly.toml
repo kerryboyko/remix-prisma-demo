@@ -1,0 +1,21 @@
+# fly.toml app configuration file generated for remix-prisma-kerry-boyko-test on 2023-05-07T21:44:59-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "remix-prisma-kerry-boyko-test"
+primary_region = "atl"
+
+[env]
+  DATABASE_URL = "file:/data/sqlite.db"
+  PORT = "8080"
+
+[[mounts]]
+  source = "data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
