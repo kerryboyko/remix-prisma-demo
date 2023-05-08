@@ -1,4 +1,8 @@
-import type { LinksFunction, ActionArgs } from '@remix-run/node';
+import type {
+  LinksFunction,
+  ActionArgs,
+  V2_MetaFunction,
+} from '@remix-run/node';
 import { Link, useActionData, useSearchParams } from '@remix-run/react';
 import { db } from '~/utils/db.server';
 import { getFromForm } from '~/tools/getFromForm';
@@ -10,6 +14,16 @@ import { createUserSession, login, register } from '~/utils/session.server';
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: loginStylesUrl },
 ];
+
+export const meta: V2_MetaFunction = () => {
+  const description = 'Login to submit your own jokes to Remix Jokes!';
+
+  return [
+    { name: 'description', content: description },
+    { name: 'twitter:description', content: description },
+    { title: 'Remix Jokes | Login' },
+  ];
+};
 
 function validateUsername(username: string): string | undefined {
   return username && username.length < 3
